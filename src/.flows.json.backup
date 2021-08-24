@@ -1,0 +1,119 @@
+[
+    {
+        "id": "bd456f7da782d28a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8b49bfbf821fe82c",
+        "type": "subflow",
+        "name": "Layout",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "8a4b7349b166e452"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 320,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "8a4b7349b166e452",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "7679302c7f2d4588",
+        "type": "http in",
+        "z": "bd456f7da782d28a",
+        "name": "",
+        "url": "/demo",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 60,
+        "wires": [
+            [
+                "042f8d543e28286e"
+            ]
+        ]
+    },
+    {
+        "id": "b5ac8a7ee17f8958",
+        "type": "http response",
+        "z": "bd456f7da782d28a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 490,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "042f8d543e28286e",
+        "type": "template",
+        "z": "bd456f7da782d28a",
+        "name": "html",
+        "field": "body",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<h1 class=\"d-flex justify-content-center align-items-center m-5\">\n    Hello, World!\n</h1>",
+        "output": "str",
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "94c1834ef7038317"
+            ]
+        ]
+    },
+    {
+        "id": "8a4b7349b166e452",
+        "type": "template",
+        "z": "8b49bfbf821fe82c",
+        "name": "html layout",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>NodeRED</title>\n\n    <link rel=\"stylesheet\" href=\"./lib/bootstrap/bootstrap.min.css\" />\n</head>\n<body>\n    \n    {{{ body }}}\n\n    <script src=\"./lib/bootstrap/bootstrap.bundle.min.js\"></script>\n    <script src=\"./lib/jquery/jquery-3.6.0.min.js\"></script>\n</body>\n</html>",
+        "output": "str",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "94c1834ef7038317",
+        "type": "subflow:8b49bfbf821fe82c",
+        "z": "bd456f7da782d28a",
+        "name": "",
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "b5ac8a7ee17f8958"
+            ]
+        ]
+    }
+]

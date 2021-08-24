@@ -1,3 +1,3 @@
 # nodered-app
 
-NodeRED starter for fullstack web application.
+NodeRED starter for fullstack web application
